@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white cursor-none antialiased;
+  }
+}
+
+@layer components {
+  .custom-cursor {
+    @apply fixed w-8 h-8 pointer-events-none mix-blend-difference z-50;
+    transform: translate(-50%, -50%);
+  }
+
+  .nav-link {
+    @apply relative text-lg font-medium text-white/80 hover:text-neon-green transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute left-0 -bottom-1 w-0 h-0.5 bg-neon-green transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .project-card {
+    @apply relative overflow-hidden rounded-lg bg-primary-dark/20 transition-all duration-500;
+  }
+
+  .project-card:hover {
+    @apply transform scale-[1.02] shadow-lg shadow-primary/30;
+  }
+
+  .skill-icon {
+    @apply flex items-center justify-center w-16 h-16 text-primary hover:text-neon-green transition-colors duration-300;
+  }
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-primary via-neon-green to-primary bg-clip-text text-transparent animate-gradient-x;
+}
+
+.card-body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  padding: var(--padding-card, 2rem);
+  gap: 0.5rem;
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--rounded-box, 1rem);
+}
