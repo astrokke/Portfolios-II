@@ -15,13 +15,14 @@ interface ProjectModalProps {
 }
 
 const ProjectModal = ({ isOpen, onClose, project }: ProjectModalProps) => {
-  if (!project) return null;
+  // Prevent modal from opening for Solage project
+  if (!project || project.title === "Solage") return null;
 
   return (
     <Modal
       isOpen={isOpen}
       onRequestClose={onClose}
-      className="bg-gray-900 text-white p-6 rounded-lg max-w-lg mx-auto"
+      className="bg-gray-900 text-white p-6 rounded-lg max-w mx-auto"
       overlayClassName="fixed inset-0 bg-black/50 flex items-center justify-center"
     >
       <button

@@ -60,3 +60,6 @@
   flex-direction: column;
   border-radius: var(--rounded-box, 1rem);
 }
+.max-w {
+  max-width: 50%;
+}

@@ -11,14 +11,17 @@ const SkillCards = () => {
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-angularjs-50.png",
           width: "48px",
+          name: "Angular",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-tailwind-css-192.png",
           width: "48px",
+          name: "Tailwind CSS",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-r%C3%A9agir-120.png",
           width: "48px",
+          name: "React",
         },
       ],
     },
@@ -31,14 +34,17 @@ const SkillCards = () => {
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-php-128.png",
           width: "48px",
+          name: "PHP",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-symfony-128.png",
           width: "48px",
+          name: "Symfony",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-sql-64.png",
           width: "48px",
+          name: "SQL",
         },
       ],
     },
@@ -50,21 +56,26 @@ const SkillCards = () => {
       tools: [
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-figma-150.png",
+          name: "Figma",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-wordpress-150.png",
+          name: "WorldPress",
           width: "48px",
         },
         {
           img: "http://nathan.musielak.net/LELE/img/icone-code/prestashop.png",
+          name: "prestashop",
           width: "48px",
         },
       ],
     },
   ];
 
+  const [hoveredTool, setHoveredTool] = useState<string | null>(null);
+
   return (
-    <div className="grid flex-wrap sm:grid-cols-2 gap-1 lg:flex lg: lg:justify-around">
+    <div className="grid flex-wrap sm:grid-cols-2 gap-1 lg:flex lg:justify-around">
       {skillsData.map((skill) => (
         <div
           key={skill.title}
@@ -89,18 +100,28 @@ const SkillCards = () => {
                 />
 
                 <div className="card-body p-6">
-                  <h3 className="text-2xl font-bold mb-4 bg-gradient-to-r from-white to-emerald-400 bg-clip-text text-transparent">
+                  <h3 className="text-2xl flex justify-center font-bold mb-4 bg-gradient-to-r from-white to-emerald-400 bg-clip-text text-transparent">
                     {skill.title}
                   </h3>
 
-                  <div className="flex gap-4">
+                  <div className="flex justify-between gap-4">
                     {skill.tools.map((tool) => (
-                      <div className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/40 hover:scale-110 transition-transform duration-200 group-hover:shadow-lg group-hover:shadow-emerald-500/20">
+                      <div
+                        key={tool.name}
+                        className="w-12 h-12 rounded-full flex items-center justify-center bg-gradient-to-br from-emerald-500/20 to-transparent border border-emerald-500/40 hover:scale-110 transition-transform duration-200 group-hover:shadow-lg group-hover:shadow-emerald-500/20"
+                        onMouseEnter={() => setHoveredTool(tool.name)}
+                        onMouseLeave={() => setHoveredTool(null)}
+                      >
                         <img
                           src={tool.img}
                           alt="tool icon"
                           className="w-8 h-8 object-contain"
                         />
+                        {hoveredTool === tool.name && (
+                          <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs rounded px-2 py-1">
+                            {tool.name}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>

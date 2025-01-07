@@ -9,7 +9,11 @@ import SkillIcon from "./components/SkillIcon";
 import AnimatedText from "./components/AnimatedText";
 import ParallaxSection from "./components/ParallaxSection";
 import ProjectModal from "./components/ProjectModal";
-
+import acceuil from "./asset/img/acceuil.png";
+import dashboard from "./asset/img/dashboard.png";
+import planning from "./asset/img/planning.png";
+import client from "./asset/img/client.png";
+import activiter from "./asset/img/activiter.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
@@ -17,7 +21,7 @@ const projects = [
     title: "E-commerce Platform",
     description: "Built with Laravell & React",
     image:
-      "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800",
+      "https://private-user-images.githubusercontent.com/145656139/325912075-87bcdd1e-2d6f-4152-b291-4ca3279d13ed.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzI1MzU1NDYsIm5iZiI6MTczMjUzNTI0NiwicGF0aCI6Ii8xNDU2NTYxMzkvMzI1OTEyMDc1LTg3YmNkZDFlLTJkNmYtNDE1Mi1iMjkxLTRjYTMyNzlkMTNlZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjQxMTI1JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI0MTEyNVQxMTQ3MjZaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0zOTUwM2ZmMjBmMjU5Y2RjYWQ1ZDUzODA5Zjk1OWZjZTM2Yzc1N2ViNTE5MTA0Y2Q0ZDE1ZTM2N2YxZDc4MjAwJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.dMjgso4OF9YYclJyCxE0onmL_Ji94OBhcOwujVtr-uw",
     tags: ["Laravell", "React", "MySQL"],
     carouselImages: [
       "https://github.com/astrokke/E-commerce/assets/145656139/87bcdd1e-2d6f-4152-b291-4ca3279d13ed",
@@ -29,26 +33,27 @@ const projects = [
   },
   {
     title: "Gestion Times Project",
-    description: "Custom PHP Framework",
-    image:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
-    tags: ["PHP", "MySQL", "REST API"],
-    carouselImages: [
-      "https://via.placeholder.com/800x400?text=CMS+1",
-      "https://via.placeholder.com/800x400?text=CMS+2",
-      "https://via.placeholder.com/800x400?text=CMS+3",
-    ],
+    description: "Built with Symfony and TypeScript",
+    image: acceuil,
+    tags: ["Symfony", "Bootstrap", "TypeScript"],
+    carouselImages: [dashboard, planning, client, activiter],
   },
+
   {
-    title: "Real-time Chat",
-    description: "WebSocket Application",
+    title: "Solage",
+    description:
+      "Application web de chat en temps réel utilisant les wallets Solana pour la connexion, garantissant l'anonymat et la sécurité des utilisateurs.",
     image:
       "https://images.unsplash.com/photo-1587620962725-abab7fe55159?auto=format&fit=crop&q=80&w=800",
-    tags: ["Node.js", "Socket.io", "MongoDB"],
+    tags: ["vite.js", "React", "NOSQL"],
+    link: "https://solage.netlify.app/",
     carouselImages: [
       "https://via.placeholder.com/800x400?text=Chat+1",
       "https://via.placeholder.com/800x400?text=Chat+2",
-      "https://via.placeholder.com/800x400?text=Chat+3",
+      {
+        src: "https://solage.netlify.app/",
+        link: "https://solage.netlify.app/",
+      },
     ],
   },
 ];
@@ -84,11 +89,21 @@ function App() {
     return () => ctx.revert();
   }, []);
 
+  const textRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.from(textRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power2.out",
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden">
       <Cursor />
       <Navigation />
-
       {/* Hero Section */}
       <header
         ref={headerRef}
@@ -99,25 +114,25 @@ function App() {
         </div>
         <div className="max-w-4xl text-center z-10">
           <AnimatedText className="text-6xl md:text-8xl font-bold mb-6 gradient-text">
-            Full Stack Developer
+            Nathan Musielak Developer
           </AnimatedText>
           <AnimatedText
             className="text-xl md:text-2xl text-white/80 mb-8"
             delay={0.5}
           >
-            Crafting elegant solutions with PHP, Symfony, & Angular
+            Développeur fullstack look for a alternance
           </AnimatedText>
           <div className="flex gap-6 justify-center">
             <a
-              href="https://github.com"
+              href="https://github.com/astrokke"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/80 hover:text-neon-green transition-colors"
+              className="text-white/80 hover:text-purple-600 transition-colors"
             >
               <Github size={24} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/nathan-musielak-developpeur/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white/80 hover:text-neon-green transition-colors"
@@ -125,15 +140,38 @@ function App() {
               <Linkedin size={24} />
             </a>
             <a
-              href="mailto:contact@example.com"
-              className="text-white/80 hover:text-neon-green transition-colors"
+              href="mailto:nathan@musielak.net"
+              className="text-white/80 hover:text-purple-500 transition-colors"
             >
               <Mail size={24} />
             </a>
           </div>
         </div>
       </header>
-
+      {/* talk Section */}
+      <div className="relative m flex items-center justify-center ">
+        <div className="max-w-4xl text-center z-10">
+          <AnimatedText
+            className="text-xl md:text-2xl text-white/80 mb-8"
+            delay={0.2}
+          >
+            Je me présente, Nathan Musielak, 21 ans, passionné par le code et le
+            Web3.
+            <br />
+            Titulaire d’un Bac+2 en développement web et web mobile, je vais
+            intégrer un Bachelor Fullstack avec une spécialisation en
+            intelligence artificielle (Machine Learning et Data).
+            <br />
+            Curieux et motivé, j'aime explorer les nouvelles technologies et
+            innover dans le domaine du Web3.
+            <br />
+            Actuellement en recherche d’une entreprise pour une alternance à
+            partir d’avril 2025, je suis prêt à relever de nouveaux défis et à
+            apporter mes compétences techniques, ma rigueur et ma créativité au
+            sein de votre équipe.
+          </AnimatedText>
+        </div>
+      </div>
       {/* Skills Section */}
       <ParallaxSection className="py-20 mb-10 px-4" speed={0.2}>
         <div id="skills">
@@ -143,9 +181,7 @@ function App() {
           <SkillIcon />
         </div>
       </ParallaxSection>
-
       {/* Projects Section */}
-
       <section className="py-20 px-4" id="projects">
         <div className=" mx-auto">
           <h2 className="text-4xl font-bold mb-16 text-center gradient-text">
@@ -158,34 +194,40 @@ function App() {
                 className="cursor-pointer"
                 onClick={() => openModal(project)}
               >
-                <ProjectCard {...project} index={index} />
+                <ProjectCard
+                  {...project}
+                  index={index}
+                  link={
+                    typeof project.carouselImages[2] === "object"
+                      ? project.carouselImages[2].link
+                      : undefined
+                  }
+                />
               </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Project Modal */}
       <ProjectModal
         isOpen={isModalOpen}
         onClose={closeModal}
         project={selectedProject}
       />
-
       {/* Contact Section */}
       <ParallaxSection className="py-20 px-4" speed={0.3}>
         <div className="max-w-4xl mx-auto text-center" id="contact">
           <AnimatedText className="text-4xl font-bold mb-8 gradient-text">
-            Let's Connect
+            Contacter moi
           </AnimatedText>
           <AnimatedText className="text-xl text-white/80 mb-8" delay={0.2}>
-            Interested in working together? Let's talk about your project.
+            Intéressé à collaborer ? Discutons de votre projet !
           </AnimatedText>
           <a
-            href="mailto:contact@example.com"
+            href="https://www.linkedin.com/in/nathan-musielak-developpeur/"
             className="inline-block px-8 py-3 bg-primary hover:bg-primary-dark text-white rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-primary/30"
           >
-            Get in Touch
+            Me contacter
           </a>
         </div>
       </ParallaxSection>

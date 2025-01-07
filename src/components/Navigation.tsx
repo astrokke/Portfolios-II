@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -10,18 +10,21 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/80 backdrop-blur-sm py-4' : 'py-6'
+        isScrolled ? "bg-black/80 backdrop-blur-sm py-4" : "py-6"
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold gradient-text">
+        <a
+          href="https://astrokke.github.io/Space-Shooter/"
+          className="text-2xl font-bold gradient-text"
+        >
           Portfolio
         </a>
 
@@ -35,29 +38,53 @@ const Navigation = () => {
 
         {/* Desktop Menu */}
         <div className="hidden md:flex gap-8">
-          <a href="#" className="nav-link">Home</a>
-          <a href="#skills" className="nav-link">Skills</a>
-          <a href="#projects" className="nav-link">Projects</a>
-          <a href="#contact" className="nav-link">Contact</a>
+          <a href="#" className="nav-link">
+            Home
+          </a>
+          <a href="#skills" className="nav-link">
+            Skills
+          </a>
+          <a href="#projects" className="nav-link">
+            Projects
+          </a>
+          <a href="#contact" className="nav-link">
+            Contact
+          </a>
         </div>
 
         {/* Mobile Menu */}
         <div
           className={`md:hidden fixed inset-0 bg-black transform transition-transform duration-300 ${
-            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+            isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
           <div className="flex flex-col items-center justify-center h-full gap-8">
-            <a href="#" className="nav-link text-2xl" onClick={() => setIsMenuOpen(false)}>
+            <a
+              href="#"
+              className="nav-link text-2xl"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Home
             </a>
-            <a href="#skills" className="nav-link text-2xl" onClick={() => setIsMenuOpen(false)}>
+            <a
+              href="#skills"
+              className="nav-link text-2xl"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Skills
             </a>
-            <a href="#projects" className="nav-link text-2xl" onClick={() => setIsMenuOpen(false)}>
+            <a
+              href="#projects"
+              className="nav-link text-2xl"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Projects
             </a>
-            <a href="#contact" className="nav-link text-2xl" onClick={() => setIsMenuOpen(false)}>
+            <a
+              href="#contact"
+              className="nav-link text-2xl"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Contact
             </a>
           </div>

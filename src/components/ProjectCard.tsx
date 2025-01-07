@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,6 +12,9 @@ interface ProjectCardProps {
   image: string;
   tags: string[];
   index?: number;
+  link?: string;
+  carouselImages?: string[];
+  onClick?: () => void;
 }
 
 const ProjectCard = ({
@@ -18,6 +23,9 @@ const ProjectCard = ({
   image,
   tags,
   index = 0,
+  link,
+  carouselImages,
+  onClick,
 }: ProjectCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -25,9 +33,9 @@ const ProjectCard = ({
     const card = cardRef.current;
     if (!card) return;
 
+    // Animation setup similar to previous implementation
     gsap.from(card, {
       y: 100,
-
       duration: 1,
       delay: index * 0.2,
       ease: "power4.out",
@@ -40,7 +48,6 @@ const ProjectCard = ({
 
     const contentElements = card.querySelectorAll(".content-element");
     const hoverTl = gsap.timeline({ paused: true });
-
     hoverTl
       .to(card.querySelector("img"), {
         scale: 1.1,
@@ -66,16 +73,43 @@ const ProjectCard = ({
     };
   }, [index]);
 
+  const handleCardClick = () => {
+    if (link) {
+      window.open(link, "_blank");
+    } else if (onClick) {
+      onClick();
+    }
+  };
+
   return (
-    <div ref={cardRef} className="project-card group">
+    <div ref={cardRef} className="project-card group" onClick={handleCardClick}>
       <div className="aspect-video overflow-hidden">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transform transition-transform duration-500"
-        />
+        {title === "Solage" && link ? (
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            <img
+              src={image}
+              alt={title}
+              className="w-full h-full object-cover transform transition-transform duration-500"
+            />
+          </a>
+        ) : (
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            infiniteLoop
+            autoPlay
+            interval={3000}
+            className="carousel"
+          >
+            {carouselImages?.map((img, index) => (
+              <div key={index}>
+                <img src={img} alt={`Slide ${index + 1}`} />
+              </div>
+            ))}
+          </Carousel>
+        )}
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent  ">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent">
         <div className="absolute bottom-0 p-6 w-full">
           <h3 className="content-element text-xl font-bold mb-2 translate-y-4">
             {title}
