@@ -1,25 +1,40 @@
 import React, { useState } from "react";
+// Front-end development images
+import frontEndImage from "../asset/img/glow-robo-hands-laptop-and-digital-marketing.gif";
+import angularIcon from "../asset/img/icons8-angularjs-50.png";
+import tailwindIcon from "../asset/img/icons8-tailwind-css-192.png";
+import reactIcon from "../asset/img/icons8-react-120.png";
 
+// Back-end development images
+import backEndImage from "../asset/img/incut-coding-window-and-programming-languages.png";
+import phpIcon from "../asset/img/icons8-php-128.png";
+import symfonyIcon from "../asset/img/icons8-symfony-128.png";
+import sqlIcon from "../asset/img/icons8-sql-64.png";
+
+// CMS images
+import cmsImage from "../asset/img/glow-data-analytics-and-visualization-on-screen.png";
+import figmaIcon from "../asset/img/icons8-figma-150.png";
+import wordpressIcon from "../asset/img/icons8-wordpress-150.png";
+import prestashopIcon from "../asset/img/prestashop.png";
 const SkillCards = () => {
   const skillsData = [
     {
       title: "Front end Development",
-      image:
-        "http://nathan.musielak.net/LELE/img/icone-code/glow-robo-hands-laptop-and-digital-marketing.gif",
+      image: frontEndImage,
       decorationColor: "#8de13d",
       tools: [
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-angularjs-50.png",
+          img: angularIcon,
           width: "48px",
           name: "Angular",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-tailwind-css-192.png",
+          img: tailwindIcon,
           width: "48px",
           name: "Tailwind CSS",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-r%C3%A9agir-120.png",
+          img: reactIcon,
           width: "48px",
           name: "React",
         },
@@ -27,22 +42,21 @@ const SkillCards = () => {
     },
     {
       title: "Back end Development",
-      image:
-        "http://nathan.musielak.net/LELE/img/icone-code/incut-coding-window-and-programming-languages.png",
+      image: backEndImage,
       decorationColor: "rgb(99 102 241)",
       tools: [
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-php-128.png",
+          img: phpIcon,
           width: "48px",
           name: "PHP",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-symfony-128.png",
+          img: symfonyIcon,
           width: "48px",
           name: "Symfony",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-sql-64.png",
+          img: sqlIcon,
           width: "48px",
           name: "SQL",
         },
@@ -50,21 +64,20 @@ const SkillCards = () => {
     },
     {
       title: "CMS|Maquetage",
-      image:
-        "http://nathan.musielak.net/LELE/img/icone-code/glow-data-analytics-and-visualization-on-screen.png",
+      image: cmsImage,
       decorationColor: "#8de13d",
       tools: [
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-figma-150.png",
+          img: figmaIcon,
           name: "Figma",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/icons8-wordpress-150.png",
+          img: wordpressIcon,
           name: "WorldPress",
           width: "48px",
         },
         {
-          img: "http://nathan.musielak.net/LELE/img/icone-code/prestashop.png",
+          img: prestashopIcon,
           name: "prestashop",
           width: "48px",
         },
@@ -72,14 +85,14 @@ const SkillCards = () => {
     },
   ];
 
-  const [hoveredTool, setHoveredTool] = useState<string | null>(null);
+  const [hoveredTool, setHoveredTool] = useState(null);
 
   return (
     <div className="grid flex-wrap sm:grid-cols-2 gap-1 lg:flex lg:justify-around">
       {skillsData.map((skill) => (
         <div
           key={skill.title}
-          className={` card w-full sm:w-96 bg-base-100 shadow-xl mb-6`}
+          className={`card w-full sm:w-96 bg-base-100 shadow-xl mb-6`}
         >
           <div className="relative group">
             <div className="card bg-gray-900 border border-gray-800 rounded-lg overflow-hidden transition-all duration-300 hover:scale-105">
@@ -91,7 +104,6 @@ const SkillCards = () => {
                 }}
               />
 
-              {/* Card content */}
               <div className="relative z-10">
                 <img
                   src={skill.image}
