@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import emailjs from '@emailjs/browser';
+
+interface FormData {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const Contact: React.FC = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     subject: '',
@@ -10,31 +18,37 @@ const Contact: React.FC = () => {
 
   const [formStatus, setFormStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('sending');
 
-    // Ici, tu peux intégrer ton service d'envoi d'email (ex: Formspree, EmailJS, backend personnalisé)
-    // Pour l'instant, nous simulons l'envoi
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500)); // Simule un délai d'envoi
-      console.log('Form data submitted:', formData); // Log les données du formulaire dans la console
+      await emailjs.send(
+        'service_nndek7k',
+        'template_rjw3qha',
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        'Tipf_OIiLj6uB73ce'
+      );
+
       setFormStatus('success');
-      setFormData({ name: '', email: '', subject: '', message: '' }); // Réinitialise le formulaire si succès
+      setFormData({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('Erreur lors de l\'envoi:', error);
       setFormStatus('error');
     }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
   };
 
   const socialLinks = [
