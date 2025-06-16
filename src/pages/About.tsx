@@ -30,8 +30,6 @@ const About = () => {
             <h3 className="heading-3 mb-2">Profil</h3>
             <p className="text-gray-300">
               Passionné par le développement web moderne, je conçois des applications en <span className="text-amber-400 font-bold">Symfony</span>, <span className="text-amber-400 font-bold">Node</span>, <span className="text-amber-400 font-bold">Angular</span> .<br/>
-              Je recherche un contrat d'alternance à partir du <span className="text-amber-400 font-bold">01/05/2025</span>.<br/>
-              <span className="italic">Rythme : 2 mois de formation, puis alternance 2 mois entreprise / 2 semaines école.</span>
             </p>
           </div>
           <div>

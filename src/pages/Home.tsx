@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profilePic from '../assets/images/moi.jpeg';
-import tecktimeImage from '../assets/images/image.png'; // Assurez-vous que les noms correspondent
-import tmaImmoImage from '../assets/images/image copy.png'; // Assurez-vous que les noms correspondent
-import solageImage from '../assets/images/image copy 2.png'; // Assurez-vous que les noms correspondent
+import tecktimeImage from '../assets/images/image.png'; 
+import tmaImmoImage from '../assets/images/image copy.png'; 
+import solageImage from '../assets/images/image copy 2.png'; 
 
 const featuredProjects = [
   {
@@ -42,8 +42,8 @@ const Home = () => {
       <h1 className="heading-1">Nathan Musielak</h1>
       <p className="text-lg text-amber-400 font-semibold">Développeur web full stack</p>
       <p className="text-gray-300 max-w-xl mt-2">
-        Passionné par le développement web moderne, je conçois des applications  en <span className="text-amber-400 font-bold">Symfony</span>, <span className="text-amber-400 font-bold">React</span>, <span className="text-amber-400 font-bold">Angular</span> et <span className="text-amber-400 font-bold">Tailwind</span>.<br/>
-        Basé à <span className="text-amber-400 font-bold">Montpellier</span>, je recherche un contrat d'alternance à partir du <span className="text-amber-400 font-bold">01/05/2025</span>.
+        Passionné par le développement web moderne, je conçois des applications  en <span className="text-amber-400 font-bold">Symfony</span>, <span className="text-amber-400 font-bold">React</span>, <span className="text-amber-400 font-bold">Angular</span> et <span className="text-amber-400 font-bold">Node.js</span>.
+        Basé à <span className="text-amber-400 font-bold">Montpellier</span>
       </p>
       <div className="flex gap-4 mt-6">
         <Link to="/projects" className="btn-primary">Voir mes projets</Link>
